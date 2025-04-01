@@ -1,0 +1,60 @@
+    * don't forget apps folder in project so we can have named routes to use
+    * 1-3 must be done in order to run project
+1. creating virtual environment
+    // terminal - "python3 -m venv djangoPy3Env"
+
+2. activating environment
+    // terminal - "source djangoPy3Env/bin/activate"
+
+3. installing django
+    // terminal - "pip install Django"
+
+4. navigate to folder that will house our project
+
+5. creating a project in folder
+    // terminal - "django-admin startproject project_name"
+
+6. cd into project
+
+7. run to make sure it works
+    // terminal - "python manage.py runserver"
+
+* for every new app in project
+    // terminal - "python manage.py startapp app_name"
+
+8. in settings.py from project, don't forget to add our app name to the list of INSTALLED_APPS
+
+9. when utilizing session in project
+    // terminal and in project directory - "python manage.py migrate"
+
+10. when creating models and "forward engineering" them. Do this everytime there is change to our models
+    // terminal - "python manage.py makemigrations"  -> "python manage.py migrate"
+
+11. using django shell to write queries/interact with models
+    // terminal - "python manage.py shell"  -> "from app_name.models import *"
+
+12. installing bcrypt in root folder with all main files
+    // terminal - pip install bcrypt
+
+
+13. Erasing all of the db, but keeping the tables
+	python manage.py flush
+
+
+
+
+
+	*Django for React
+*Create client directory and cd into it
+	1. npm create vite@latest	-> js + swc
+	2. npm install react-router-dom axios
+	3. npm i bcrypt		-> If it gives error: npm install bcrypt
+	4. npm install dotenv
+	5. npm install jsonwebtoken
+	6. npm install cookie-parser
+* In Server directory
+	1. touch "server.js"
+	2. npm init -y
+	3. npm install express mongoose cors dotenv
+	4. npm install --save - dev nodemon
+	5. in "server.js" -> "type" : "module" & "dev" : "npx nodemon"
