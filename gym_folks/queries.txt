@@ -1,0 +1,40 @@
+query for making a new gym * 3
+    Gym.objects.create(name='Rhino', city='Vista', state='CA')
+    Gym.objects.create(name='bFit', city='Peris', state='CA')
+    Gym.objects.create(name='2min', city='County', state='CA')
+
+query for deleting all three gyms
+    1. c = Gym.objects.get(id =1 )
+    2. c.delete()
+    * repeat twice more where id increments or stays as one
+
+query to create 3 more gyms
+    Gym.objects.create(name='Rock', city='Ore', state='CA')
+    Gym.objects.create(name='Ice', city='SnowPoint', state='CA')
+    Gym.objects.create(name='Ghost', city='HeartHome', state='CA')
+
+query to create 3 folks that belong to first gym
+    folk = Folks.objects.create(first_name="Ash", last_name="Ketchup", gym= Gym.objects.get(id=1))
+    folk = Folks.objects.create(first_name="Berry", last_name="Seal", gym= Gym.objects.get(id=1))
+    folk = Folks.objects.create(first_name="Cyrus", last_name="Geltic", gym= Gym.objects.get(id=1))
+
+query to create 3 folks that belong to second gym
+    folk = Folks.objects.create(first_name="Daniel", last_name="Pore", gym= Gym.objects.get(id=2))
+    folk = Folks.objects.create(first_name="Ted", last_name="Ned", gym= Gym.objects.get(id=2))
+    folk = Folks.objects.create(first_name="Jack", last_name="Turf", gym= Gym.objects.get(id=2))
+
+
+query to create 3 folks that belong to third gym
+    folk = Folks.objects.create(first_name="Folk", last_name="Legend", gym= Gym.objects.get(id=3))
+    folk = Folks.objects.create(first_name="Sarah", last_name="Night", gym= Gym.objects.get(id=3))
+    folk = Folks.objects.create(first_name="Harold", last_name="Furr", gym= Gym.objects.get(id=3))
+
+
+query for retrieving all folks from gym 1
+    Folks.objects.filter(gym=Gym.objects.get(id=1))
+                                                                    within the filer, the LHS of equals must match record name
+query for retrieving all folks from last gym
+    Folks.objects.filter(gym=Gym.objects.last())
+
+query for retrieving the last folk's gym
+    Gym.objects.filter(folks=Folks.objects.last())

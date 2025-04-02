@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="forms">
+            <form action="/gym/create" class="form" method="post">
+                {% csrf_token %}
+                <div>
+                    <h2>New Gym</h2>
+                </div>
+                Name: <input type="text" name="name">
+                City: <input type="text" name="city">
+                State: <input type="text" name="state">
+                <button>Create</button>
+            </form>
+            <form action="/folk/create" class="form" method="post">
+                {% csrf_token %}
+                <div>
+                    <h2>New Folk</h2>
+                </div>
+                First Name: <input type="text" name="first_name">
+                Last Name: <input type="text" name="last_name">
+                Gym: <select name="gym" id="">
+                    <option value=""selected disabled hidden>Choose Gym</option>
+                    {% for gym in gyms %}
+                        <option value={{ gym.id }}>{{ gym.name }}</option>
+                    {% endfor %}
+                </select>
+                <button>Create</button>
+            </form>
+        </div>
+        <div class="display">
+            {% for i in gyms %}
+            <div class="card">
+                <h1>{{ i.folks.count }} - {{ i.name }} | <a href="/delete/{{ i.id }}">Delete</a></h1>
+                {% for folk in folks %}
+                <div class="data">
+                    {% if i.id == folk.gym.id %}
+                        {{ folk.first_name }}
+                        {{ folk.last_name }}
+                    {% endif %}
+                </div>
+                {% endfor %}
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
