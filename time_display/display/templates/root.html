@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Time</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="info">
+            <h1>Current time and date</h1>
+        </div>
+        <div class="time">
+            <h1>{{ request.session.time }}</h1>
+        </div>
+        <form action="/fetch" class="fetch" method="post">
+            {%csrf_token%}
+            <select name="c_tz">
+                <option selected="true" disabled="disabled">--select timezone--</option>
+                <option value="America/Los_Angeles">America/Los_Angeles</option>
+                <option value="America/Denver">America/Denver</option>
+                <option value="America/Chicago">America/Chicago</option>
+                <option value="America/New_York">America/New_York</option>
+            </select>
+            <button>Display Time</button>
+        </form>
+    </div>
+</body>
+</html>
