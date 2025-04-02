@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+</head>
+<body>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% if request.session.email_error %}
+        <p>{{ request.session.email_error }}</p>
+    {% endif %}
+    <div class="container">
+        <div class="col">
+            <form action="/register" method="post">
+                {% csrf_token %}
+                <div>
+                    <p>Registration</p>
+                </div>
+                <div>
+                    First Name: <input type="text" name="first_name">
+                </div>
+                <div>
+                    Last Name: <input type="text" name="last_name">
+                </div>
+                <div>
+                    Email: <input type="text" name="email">
+                </div>
+                <div>
+                    Password: <input type="password" name="password">
+                </div>
+                <div>
+                    Confirm Password: <input type="password" name="confirm_password">
+                </div>
+                <button>Register</button>
+            </form>
+        </div>
+        <div class="col">
+            <form action="login" method="post">
+                {% csrf_token %}
+                <div>
+                    <p>Login</p>
+                </div>
+                <div>
+                    Email: <input type="text" name="email">
+                </div>
+                <div>
+                    Password: <input type="text" name="password">
+                </div>
+                <button>Login</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
