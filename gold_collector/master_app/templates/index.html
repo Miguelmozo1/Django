@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold Collector</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h4>Your Gold:</h4>
+            <p>{{ gold }}</p>
+            <a href="/reset">Reset</a>
+        </div>
+        <div class="forms">
+            <div class="form">
+                <form action="/gold" method="post">
+                    {% csrf_token %}
+                    <div class="form-control">
+                        <h1>River</h1>
+                        <p>(earns 1-8 golds)</p>
+                        <button class="btn">Find Gold!</button>
+                    </div>
+                    <input type="hidden" name="name" value="river">
+                </form>
+            </div>
+            <div class="form">
+                <form action="/gold" method="post">
+                    {% csrf_token %}
+                    <div class="form-control">
+                        <h1>Steal</h1>
+                        <p>(earns 1-5 golds)</p>
+                        <button class="btn">Find Gold!</button>
+                    </div>
+                    <input type="hidden" name="name" value="steal">
+                </form>
+            </div>
+            <div class="form">
+                <form action="/gold" method="post">
+                    {% csrf_token %}
+                    <div class="form-control">
+                        <h1>Casino</h1>
+                        <p>(earns/loses 0-50 golds)</p>
+                        <button class="btn">Find Gold!</button>
+                    </div>
+                    <input type="hidden" name="name" value="casino">
+                </form>
+            </div>
+            <div class="form">
+                <form action="/gold" method="post">
+                    {% csrf_token %}
+                    <div class="form-control">
+                        <h1>Beg</h1>
+                        <p>(earns 1-6 golds)</p>
+                        <button class="btn">Find Gold!</button>
+                    </div>
+                    <input type="hidden" name="name" value="beg">
+                </form>
+            </div>
+        </div>
+        <h4>Activities:</h4>
+        <div class="activities">
+            <ul id="list">
+                {% for i in activities %}
+                <li>{{ i }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

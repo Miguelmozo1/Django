@@ -1,0 +1,92 @@
+:root {
+    background: url('/static/images/root.jpeg');
+    color: white
+}
+
+* {
+    padding: 0px;
+    margin: 0px
+}
+
+.container {
+    min-width: 1200px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    min-height: 45em;
+    gap: 2em;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.header {
+    display: inherit;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+    width: 50%;
+    height: 5em;
+    justify-content: center;
+    border: 1px solid white;
+}
+
+.forms {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 90%;
+}
+
+.form {
+    height: 7em;
+    border: 4px solid white;
+    padding: 1em 1em;
+    box-shadow: 3px 3px rgb(154, 54, 221), 1em 0 .4em rgb(255, 223, 0);
+}
+
+.activities {
+    height: 14em;
+    border: 2px solid white;
+    width: 70%;
+    margin: 0px auto;
+    overflow-y: auto;
+    padding: 2em;
+}
+
+#list {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 0.3em;
+}
+
+.btn {
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    position: relative;
+    background: none;
+    color: rgb(135, 253, 1);
+    border: 0.2em solid rgb(135, 253, 1);
+    padding: 0.5em 1em;
+    transition: all .4s ease;
+    }
+    .btn:hover {
+        transform: scale(1.2);
+        margin: 0;
+    }
+
+.form-control {
+    display: flex;
+    flex-direction: column;
+    gap: .6em;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    color: white;
+}
