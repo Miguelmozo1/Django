@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2 class="blend">Please Fill Out</h2>
+        <form action="/submit" class="form" method="post">
+            {% csrf_token %}
+            <p style="color: red;">Submit all, no validations since classes aren't being used</p>
+            <div>
+                Name: <input type="text" name="name">
+            </div>
+            <div>
+                Favorite Hobby: <input type="text" name="favorite_hobby">
+            </div>
+            <div>
+                Indoor?
+                Yes: <input type="radio" value="Yes" name="indoor">
+                No: <input type="radio" value="No" name="indoor">
+            </div>
+            <div class="input">
+                Required to Buy:
+                <div>
+                    Shoes:<input type="checkbox"  name="req" value="shoes">
+                </div>
+                <div>
+                    Clothes:<input type="checkbox" name="req" value="clothes">
+                </div>
+            </div>
+            <div>
+                Type:
+                <select name="type">
+                    <option disabled selected value> -- Select -- </option>
+                    <option value="solo">Independent Sport</option>
+                    <option value="team">Team Sport</option>
+                </select>
+            </div>
+            <div id="comment">
+                Comment:
+                <textarea name="comment" cols="30" rows="10"></textarea>
+            </div>
+            <button>Submit</button>
+        </form>
+    </div>
+</body>
+</html>

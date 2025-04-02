@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="blend">Data</h1>
+        <a href="/">Home</a>
+        <div class="data">
+            <div>
+                Name: {{ name }} 
+            </div>
+            <div>
+                Favorite Hobby: {{ hobby }} 
+            </div>
+            <div>
+                Indoor Sport? {{ indoor }} 
+            </div>
+            <div>
+                Required Purchases: {{ required }} 
+            </div>
+            <div>
+                Independent or Team? {{ type }} 
+            </div>
+            <div id="text">
+                {% if comment|length == 0 %}
+                    <p>No Comment Provided</p>
+                    {% else %}
+                    <p>Comment: {{ comment }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
