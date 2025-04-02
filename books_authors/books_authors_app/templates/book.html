@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book & Authors</title>
+</head>
+<body>
+    <a href="/">Home</a>
+    <div class="data">
+        <h1>{{ book.title }}</h1>
+        <h4>ID: {{ book.id }}</h4>
+        <div>
+            <p>Description:</p>
+            <div>
+                {{ book.description }}
+            </div>
+        </div>
+        <div>
+            <h3>Authors:</h3>
+            <ul>
+                {% for author in authors %}
+                    <li>{{author.first_name}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <form action="/join/book" method="post">
+            {% csrf_token %}
+            <div>
+                <select name="author" id="">
+                    <option value=""selected disabled hidden>Choose Author</option>
+                    {% for author in non %}
+                        <option value="{{ author.id }}">{{ author.first_name }} {{ author.last_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button>Add</button>
+            <input type="hidden" value="{{ book.id }}" name="book_id">
+        </form>
+    </div>
+</body>
+</html>

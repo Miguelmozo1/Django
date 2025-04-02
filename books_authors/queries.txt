@@ -1,0 +1,66 @@
+creating 5 books
+    Book.objects.create(title='C Sharp',description='Book 1')
+    Book.objects.create(title='Java',description='Book 2')
+    Book.objects.create(title='Python',description='Book 3')
+    Book.objects.create(title='PHP',description='Book 4')
+    Book.objects.create(title='Ruby',description='Book 5')
+
+creating 5 authors
+    Author.objects.create(first_name='Jane', last_name='Austen', notes='author 1')
+    Author.objects.create(first_name='Emily', last_name='Dener', notes='author 2')
+    Author.objects.create(first_name='Dior', last_name='Gare', notes='author 3')
+    Author.objects.create(first_name='Wilhelm', last_name='Karr', notes='author 4')
+    Author.objects.create(first_name='Lau', last_name='Tzu', notes='author 5')
+
+
+changing "C Sharp" to "C#"
+    book = Book.objects.get(id=1)
+    book.title = "C#"
+    book.save()
+
+changing first name of 4th author to "Bill"
+    author = Author.objects.get(id=4)
+    author.first_name = "Bill"
+    author.save()
+
+assigning 1st author to first two books
+    book1 = Book.objects.get(id=1)
+    book2 = Book.objects.get(id=2)
+    author1 = Author.objects.get(id = 1)
+
+    author1.books.add(book1, book2)
+    author1.books.all()     - check all of "author1" books
+
+assigning 2nd author to first 3 books
+    author2 = Author.objects.get(id=2)
+    book3 = Book.objects.get(id=3)
+
+    author2.books.add(book1, book2, book3)
+
+assigning 3rd author to first 4 books
+    author3 = Author.objects.get(id=3)
+    book4 = Book.objects.get(id=4)
+
+    author3.books.add(book1, book2, book3, book4)
+
+assigning 4th author to all 5 books
+    author4 = Author.objects.get(id=4)
+    book5 = Book.objects.get(id=5)
+
+    author4.books.add(book1, book2, book3, book4, book5)
+
+retrieve all authors for the 3rd book
+    book3.authors.all()
+
+removing 1st author of the 3rd book
+    book3.authors.remove(author2)
+
+adding a 5th author for second book
+    author5 = Author.objects.get(id=5)
+    author5.books.add(book2)
+
+finding all books that 3rd author is part of
+    author3.books.all()
+
+finding all authors that contributed to 5th book
+    book5.authors.all()
