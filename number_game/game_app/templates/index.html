@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessing Game</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        {{ num }}
+        <div class="nav">
+            <div>
+                <h1>Play the Number Game</h1>
+            </div>
+            <div>
+                <a href="/reset">Reset Session</a>
+            </div>
+        </div>
+        <form action="/guess" method="post" class="form">
+            {% csrf_token %}
+            Take a guess: <input type="number" name="attempt">
+            <button>Submit</button>
+        </form>
+        <div>
+            <h3>Attempts: {{ attempts }}</h3>
+        </div>
+        <div style="margin: 0px auto;  margin-top: 2em; width: 300px;height: 300px; display: flex; flex-direction: column; justify-content: center; text-align: center; background-color: {{class}}; ">
+            {% if class == "green"%}
+                <h1>Congrats!</h1>
+            {% endif %}
+            {% if class == "yellow"%}
+                <h1>Too High!</h1>
+            {% endif %}
+            {% if class == "red"%}
+                <h1>Too Low!</h1>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

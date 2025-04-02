@@ -1,0 +1,31 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+.container {
+    padding: 0.5em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    margin: 0px auto;
+    min-height: 350px;
+}
+
+.nav {
+    border-bottom: 2px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form {
+    padding-top: 1em;
+}
+
+a {
+    text-decoration: none;
+    font-style: italic;
+}
