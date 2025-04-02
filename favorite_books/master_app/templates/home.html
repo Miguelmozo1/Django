@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <p>Welcome, {{ user.first_name }}</p>
+            <a href="/logout">Log Out</a>
+        </div>
+        <div class="display">
+            <form action="/books/create" method="post">
+                {% csrf_token %}
+                <h3>Add a Favorite Book</h3>
+                Title <input type="text" name="title">
+                Description <textarea name="description" cols="20" rows="5"></textarea>
+                <button>Add</button>
+            </form>
+            <div class="books">
+                <h3>All Books</h3>
+                {% for book in books %}
+                    <a href="books/{{ book.id }}">{{ book }}</a>
+                    created by {{ book.user }}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/success">Home</a>
+    <form action="/books/update" method="post">
+        {% csrf_token %}
+        <input type="text" name="title" value="{{ book.title }}">
+        <p>Added by: {{ book.user }}</p>
+        <p>Added on: {{ book.created_at }}</p>
+        <p>Last updated on: {{ book.updated_at }}</p>
+        <textarea name="description" cols="30" rows="10">{{ book.description }}</textarea>
+        <div>
+            <button value="update" name="btn">Update</button>
+            <button value="delete" name="btn">Delete</button>
+        </div>
+        <input type="hidden" value="{{ book.id }}" name="book_id">
+    </form>
+    <div>
+        <h1>Users who like {{ book }}</h1>
+        <div>
+            {% if user not in book.liked_by.all %}
+                <a href="/books/add/{{book.id}}">Add to favorites?</a>
+            {% endif %}
+            {% for u in book.liked_by.all %}
+                <p>{{ u }}</p>
+                <div>
+                    {% if u.id == user.id %}
+                        <a href="/books/remove/{{ book.id }}">Remove from favorites</a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
