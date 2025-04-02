@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Shows</title>
+</head>
+<body>
+    <div class="container">
+        <h1>All Shows</h1>
+        <table>
+            <thead>
+                <tr>ID</tr>
+                <tr>Title</tr>
+                <tr>Network</tr>
+                <tr>Release Date</tr>
+                <tr>Actions</tr>
+            </thead>
+            <tbody>
+                {% for show in shows %}
+                <tr>
+                    <th>{{ show.id }}</th>
+                    <td>{{ show.title }}</td>
+                    <td>{{ show.network }}</td>
+                    <td>{{ show.release_date }}</td>
+                    <td><a href="/shows/show/{{show.id}}">Show</a> | <a href="/shows/edit/{{show.id}}">Edit</a> | <a href="/delete/show/{{show.id}}">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div>
+            <h3><a href="/shows/create/show">Add a New Show</a></h3>
+        </div>
+    </div>
+</body>
+</html>
